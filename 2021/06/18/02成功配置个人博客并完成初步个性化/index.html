@@ -195,12 +195,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>793 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
         </span>
     
     
@@ -219,7 +219,10 @@
                       alt="通过PicX图床实现图片加速与管理"
                 ></p>
 <h2 id="为什么写个人博客-Why-blog"><a href="#为什么写个人博客-Why-blog" class="headerlink" title="为什么写个人博客 | Why blog"></a>为什么写个人博客 | Why blog</h2><ol>
-<li>个人网站的优越性</li>
+<li>个人网站的优越性：社交媒体是一种主动展示吧，个人网站是一种被动展示，属于如果你想看，你可以点进我的网页，但不是我突然 post 在 pyq，然后让你点进来的，有点“愿者上钩”的感觉。</li>
+<li>我以前初中和高中写过两次微信公众号，现在账号密码都忘了，但被好多认识的人关注实在很社死。但谁让我又喜欢写呢哈哈。</li>
+<li>高考心愿 to-dos ：在不以分数为目的指导下，学自己喜欢的东西，做自己喜欢的事，搭建一个网站，在这个过程中学习编程。</li>
+<li>在自己的网站上放项目总结，编程、跑步、旅游、读书等文章，如果录取了新闻系还会写采访；甚至可以在自己网站上连载小说，typora 可以用 gitbook 生成书。</li>
 </ol>
 <h2 id="如何搭建-How-to-set-up"><a href="#如何搭建-How-to-set-up" class="headerlink" title="如何搭建 | How to set up"></a>如何搭建 | How to set up</h2><h3 id="稍微回忆一下整个过程"><a href="#稍微回忆一下整个过程" class="headerlink" title="稍微回忆一下整个过程"></a>稍微回忆一下整个过程</h3><blockquote>
 <p>只是复盘自己摸索的过程，并不是标准写的一篇好用的教程。</p>
@@ -229,7 +232,7 @@
 <li>在本地使用 visual studio code 作为编译环境。</li>
 <li>在 mac 环境下，用镜像先安装 homebrew，然后用 Terminal。</li>
 <li>执行命令安装 git，配置用户名、密码、SSH keys。测试 git comment, clone, push是否能正常使用。</li>
-<li>这时候甚至可以从 html 开始完全写一个网页，然后以后自己用 css 渲染，加上 js 可以在网页上跑程序。可以实时编辑，也挺有成就感的，但我弃坑了，<a class="link"   target="_blank" rel="noopener" href="https://cmpmq.github.io/" >这是以前我的网站<i class="fas fa-external-link-alt"></i></a>。很简陋，所以还是 hexo 香。</li>
+<li>这时候甚至可以从 html 开始完全写一个网页，然后以后自己用 css 渲染，加上 js 可以在网页上跑程序。可以实时编辑，也挺有成就感的，但我弃坑了，<a class="link"   target="_blank" rel="noopener" href="https://cmpmq.github.io/" >这是以前我的网站<i class="fas fa-external-link-alt"></i></a>。很简陋，所以还是 hexo 香。样式、功能都有，各个版本都有适配。</li>
 <li>安装 hexo。我是后来才看见的这个文档，非常好用，可以照做，也有视频 <a class="link"   target="_blank" rel="noopener" href="https://easyhexo.com/" >easyhexo<i class="fas fa-external-link-alt"></i></a>。</li>
 <li>安装-配置-部署，都在上面的网站有。配置在本地的 <code> _config.yml</code>  文档，然后部署到自己的 GitHub Pages。</li>
 <li>安装主题，选一个官方文档写得好的很重要！那样的话直接照做就行了。直接 git clone 然后在配置文件中把 themes 改掉就行。剩下的稍微个性化一些的配置要看官方文档。看上面 easyhexo 推荐的很多个主题，或者使用我现在用的 <a class="link"   target="_blank" rel="noopener" href="https://keep-docs.xpoet.cn/usage-tutorial/quick-start.html#%E5%AE%89%E8%A3%85" >Keep Theme<i class="fas fa-external-link-alt"></i></a>。</li>
@@ -240,9 +243,18 @@
 <li>如何使用mac。买新电脑后激励自己学点新东西，结果一开始连开关机都不会，键盘、鼠标手势、快捷键也要全部从头开始学。</li>
 <li>git 其实还是不大会，就是看着别人怎么做，然后自己贴一下代码，然后就装好了。不知道为什么跑起来了，也不知道为什么跑不起来。</li>
 <li>装了 vs code，大学里总归用得上的，大学编程不在话下（bushi）。</li>
-<li>锻炼百折不挠、越挫越勇的精神，通过 b站和百度搜索照着做。</li>
+<li>锻炼百折不挠、越挫越勇的精神，通过 b站和百度搜索照着做，硬着头皮看报错，有时候半懂不懂还接着做吧。印象里有一次本地里网站跑起来了， deploy 上去出错，自闭了，过了一会又好了，大概因为 github 太慢了。所以要对自己有信心吧哈哈，实在不行就过几天再接着 debug。</li>
+<li>其实有些人的教程做得有点坑，我 b站上录的第一个教程也不好。可能会重新做一次吧，录教程和写博客是当作总结和反思的步骤，在教别人的过程中学习。</li>
+<li>熟悉 markdown 的语法，markdown 我一直用的，其实也不复杂，就是现在要用一下代码块。比如说安装 <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-browsersync" >hexo-browsersync<i class="fas fa-external-link-alt"></i></a>  插件，就不用手动刷新，只要保存就会自动刷新页面看效果，另外这里演示用到了链接和代码块的 md 语法。其他的在写作中用加粗，标题（自动生成目录 toc），斜体，引用，完全够用了。我要演示 md 语法的话要用转义符啊，那下次填坑吧。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-browsersync --save</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>跟着 Keep Theme 做的，然后有讲到网页 load 的加速， 并且使用了 <a class="link"   target="_blank" rel="noopener" href="https://picx.xpoet.cn/#/tutorials" >PicX 图床<i class="fas fa-external-link-alt"></i></a>。</li>
+<li>写代码一时爽，一直写代码一直爽。</li>
 </ol>
 <h2 id="新坑-New-Ideas"><a href="#新坑-New-Ideas" class="headerlink" title="新坑 | New Ideas"></a>新坑 | New Ideas</h2><ol>
+<li>实现多平台同步，iOS全家桶下使用 icloud 的可行性</li>
 <li>加上 Gitalk 的插件，虽然只有用 Github 的人能来评论～</li>
 <li>写个镜像的 English 版本的，每写一篇文章还自己翻译一下，练习英语塞。</li>
 <li>加上更多功能，比如统计文章篇目、总字数，文章内加音乐、b站视频，hexo其他插件的尝试等等。</li>
@@ -250,6 +262,9 @@
 <li>在上述实践基础上，学习前端的更多知识，尝试写个自己的主题。</li>
 <li>坚持写 blog，网页上作者边上的 lv1,2,3 … 是以文章数量为评判的，所以先多写点，然后升级。如果自己坚持下来了，在这个过程中锻炼了写作和编程维护博客的能力，就买个腾讯云域名之类的。</li>
 <li>好像这样之后可以集成，说是发布更加简单一些。</li>
+<li>想加个彩蛋和隐藏入口。</li>
+<li>甚至还有个 RSS 订阅功能可以开启。</li>
+<li>提速，现在的局限是服务器，以后文章多了也许会有新的问题，不过现在已经用图床 PicX 加速了。</li>
 </ol>
 
         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,9 +20,9 @@
 
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/bridge-yangpu.jpeg","favicon":"/images/mq.PNG","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Welcome to the world of 每天都在学点新东西的小马"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
-    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/bridge-yangpu.jpeg","favicon":"/images/mq.PNG","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Welcome to the world of 每天都在学点新东西的小马"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -82,9 +82,9 @@
                 
                     
                         
-                            <span class="s-icon-item desktop">
+                            <span class="s-icon-item youtube">
                                 <a target="_blank" href="https://space.bilibili.com/39113587">
-                                    <i class="fab fa-desktop"></i>
+                                    <i class="fab fa-youtube"></i>
                                 </a>
                             </span>
                         
@@ -118,7 +118,7 @@
                             <a class="active"
                                href="/"
                             >
-                                HOME
+                                首页
                             </a>
                         </li>
                     
@@ -126,7 +126,15 @@
                             <a class=""
                                href="/archives"
                             >
-                                ARCHIVES
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
                             </a>
                         </li>
                     
@@ -134,14 +142,20 @@
                             <a class=""
                                href="/about"
                             >
-                                ABOUT
+                                关于
                             </a>
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -155,17 +169,22 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class="active"
-                       href="/">HOME</a>
+                       href="/">首页</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">ARCHIVES</a>
+                       href="/archives">归档</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/about">ABOUT</a>
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
                 </li>
             
         </ul>
@@ -214,9 +233,31 @@
         <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Jun 11 2021 19:13:33 GMT+0800">2021-06-11</span></span>
         
         
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E4%B8%8A%E6%B5%B7/">上海</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E9%AA%91%E8%A1%8C/">骑行</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
 
-    <a href="/2021/06/11/%E6%BB%A8%E6%B1%9F%E9%AA%91%E8%A1%8C/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/06/11/%E6%BB%A8%E6%B1%9F%E9%AA%91%E8%A1%8C/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -244,7 +285,7 @@
         
     </div>
 
-    <a href="/2021/06/11/hello-world/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/06/11/hello-world/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -279,7 +320,7 @@
         </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
         </div>
         
     </div>
@@ -341,6 +382,35 @@
 
 
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
 </main>
 
@@ -360,6 +430,14 @@
 
 
 
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
 
 
 

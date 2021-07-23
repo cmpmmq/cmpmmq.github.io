@@ -195,7 +195,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>586 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>611 字</span>
         </span>
     
     
@@ -223,7 +223,7 @@
     <h2>Before Learning</h2>
     <h3>Why HTML?</h3>
     <p>HTML, a markup language; not a programming language; easy to pick up to stduy web design.<br>Things to study next: CSS, HTML DOM, Javascript, Vue...<br>What's the use of all these? To write a website && personalize anki card && other themes such as VSC, Typora, etc.</p>
-    <h3>markdown & HTML 的关系：</h3>
+    <h3>markdown & HTML</h3>
     <p>之前的 blog 是用md写的，md本身也可以另存为 html, docx, pdf 之类的文件。md 本身让我感觉是 HTML 的简化版，不用打 tag，用 # * 之类的符号加粗斜体设置层级，不用渲染格式，和没有 CSS 的 html 文件有类似之处。所以这篇 html 博客也能和谐地渲染成 Keep Theme 主题。</p>
     <p>关于调试： live review 的两种方法<br>
         1. Visual Studio Code + Live Server；未渲染 CSS<br>
@@ -235,7 +235,17 @@
     <!-- comments: cmd+/ -->
 
     <p>使用嵌入式代码分享b站教程：</p>
-    <iframe src="//player.bilibili.com/player.html?aid=57277708&bvid=BV1Zx41197gA&cid=100010318&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="600" height="350"> </iframe>
+    
+    <iframe src="//player.bilibili.com/player.html?aid=57277708&bvid=BV1Zx41197gA&cid=100010318&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" id = "demo"> </iframe>
+
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script>
+    $(document).ready(function() {
+    var ifr_width=$(window).width()*0.5;
+    $("#demo").css('width',ifr_width);
+    $("#demo").css('height',ifr_width*0.55);
+    });
+    </script>
     
     <h2>HTML basic tags</h2>
     <p>以下是跟着教程打的代码结果示意: </p>
@@ -350,9 +360,10 @@
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.jsdelivr.net/gh/cmpmmq/image-hosting@main/配置hexo博客blog.71vn3ra7gbnk.jpeg"
-                      alt="" width="200"
+                      alt="" width="90%"
                 >
     </a>
+    <p>width = 80% 实现图片自适应</p>
     <img src="" alt="Shown if the image is not loaded sucessfully: My Sample Image">
 
     <h3>Others</h3>
@@ -490,7 +501,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Before Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Why HTML?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">markdown &amp; HTML 的关系：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">HTML basic tags</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">Headings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Paragraph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">Forms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text">Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.7.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.</span> <span class="nav-text">Others</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Before Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Why HTML?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">markdown &amp; HTML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">HTML basic tags</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">Headings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">Paragraph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Lists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.5.</span> <span class="nav-text">Forms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.6.</span> <span class="nav-text">Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.7.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.8.</span> <span class="nav-text">Others</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>

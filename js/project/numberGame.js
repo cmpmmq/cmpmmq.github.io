@@ -2,9 +2,8 @@
 let kString = '1233';
 
 // 设置游戏难度和猜数字位数
-let n = kString.length;
 
-function gameCaculate(iString){
+function gameCaculate(n, iString){
     // 计分
     let result = [0,0];
 
@@ -17,8 +16,6 @@ function gameCaculate(iString){
         bookKey[j] = 0;
         bookInput[j] = 0;
     }
-    
-    
     
     for (i = 0; i < n; i ++){
         keyNum[i] = Number(kString[i]);
@@ -33,8 +30,8 @@ function gameCaculate(iString){
     }
     
     for(j = 0; j < 10; j++){
-        if(bookInput[j]){
-            result[1] += bookKey[j];
+        if(bookKey[j]){
+            result[1] += bookInput[j];
         }
     }
     
@@ -55,12 +52,13 @@ function clickButton(){
     sum ++;
     let iNum = document.getElementById('iNum').value;
     kString = document.getElementById('kString').value;
-    n = kString.length;
-    
-    let result = gameCaculate(iNum);
+    const n = kString.length;
+
+    let result = gameCaculate(n, iNum);
     let newRow = document.getElementById('gameBoard').insertRow(sum);
     newRow.insertCell(0).innerHTML = sum;
     newRow.insertCell(1).innerHTML = iNum;
     newRow.insertCell(2).innerHTML = result[0];
     newRow.insertCell(3).innerHTML = result[1];
+    newRow.insertCell(4).innerHTML = kString;
 }

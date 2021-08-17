@@ -203,7 +203,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>107 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>114 字</span>
         </span>
     
     
@@ -232,7 +232,7 @@
         </header>
 
         <p>猜数字 游戏规则</p>
-        <p>内测版懒得写规则ing</p>
+        <p>内测版懒得写规则 ing</p>
         <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）；不同位数选择，答案的随机数生成；重复or不重复；游戏进度缓存</p>
 
         <table id="gameBoard">
@@ -242,7 +242,7 @@
                     <th>猜测数据</th>
                     <th>完全猜中</th>
                     <th>属于答案</th>
-                    <th>内测答案</th>
+                    <!-- <th>内测答案</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -252,9 +252,15 @@
         <br>
 
         <form>
-            <p>测试版，请输入测试的答案：<input type="number" name="" id="kString" placeholder="请输入设定的答案"></p>
+            <p>设定游戏难度，待猜测的游戏位数：<input type="number" id="n" value="3"> 是否包含重复数字：</p>
+            <input type="button" value="按下开始游戏" onclick="gameGenerate()">
+            <!-- <p style="color: red;" id="gameDisplay"> 警告，答案未生成</p> -->
+            <!-- <p>测试版，请输入测试的答案or按上方按钮生成：<input type="number" name="" id="kString" placeholder="请输入设定的答案"></p> -->
+            <br>
+
             <p>输入猜测的数字：<input type="number" name="" id="iNum" placeholder="请输入你猜测的数字"></p>
-            <input type="button" name="" id="" value="按下按钮提交" onclick="clickButton()">
+            <input type="button" name="" id="" value="按下按钮提交" onclick="guessNumber()">
+            <p style="color: red;" id="gameResult"></p>
         </form>
 
         <!-- <script>alert('Hello World')</script> -->

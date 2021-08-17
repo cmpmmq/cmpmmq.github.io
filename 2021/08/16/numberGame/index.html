@@ -203,7 +203,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>114 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>188 字</span>
         </span>
     
     
@@ -223,19 +223,19 @@
             
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Number Game</title>
-    </head>
+    <head></head>
     <body>
         <header>
             <h1>Number Game</h1>
         </header>
 
-        <p>猜数字 游戏规则</p>
-        <p>内测版懒得写规则 ing</p>
+        <p>猜数字 游戏规则 (内测版懒得写规则 ing)</p>
+        <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisiing elit. Inventore, saepe quaerat facere dolorem eum dolor dolorum. Delectus dicta aliquam veniam assumenda. Doloremque maiores, esse aliquam quo optio magnam eum cupiditate?</p> -->
         <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）；不同位数选择，答案的随机数生成；重复or不重复；游戏进度缓存</p>
 
+        <br>
         <table id="gameBoard">
+            <caption>游戏界面</caption>
             <thead>
                 <tr>
                     <th>尝试次数</th>
@@ -245,23 +245,45 @@
                     <!-- <th>内测答案</th> -->
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
 
-        <br>
-
-        <form>
-            <p>设定游戏难度，待猜测的游戏位数：<input type="number" id="n" value="3"> 是否包含重复数字：</p>
-            <input type="button" value="按下开始游戏" onclick="gameGenerate()">
+        <div id="answerBoard" style="display: block;">
+            <!-- 答案产生板 -->
+            <p>设定游戏难度</p>
+            <ul>
+                <li>待猜的数字位数：<input type="number" id="n" value="3"></li>
+                <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字（还没写，你选了也没用）</li>
+                <li>游戏版本：<input type="radio" name="version" id="officalVersion" checked = true>正式游戏版 <input type="radio" name="version" id="testVersion">开发者内测版（还未开放，你选了也没用）</li>
+            </ul>
+            <p>游戏难度确认后不可更改!  <input type="button" value="按下开始游戏" onclick="gameGenerate()"></p>
             <!-- <p style="color: red;" id="gameDisplay"> 警告，答案未生成</p> -->
             <!-- <p>测试版，请输入测试的答案or按上方按钮生成：<input type="number" name="" id="kString" placeholder="请输入设定的答案"></p> -->
-            <br>
 
-            <p>输入猜测的数字：<input type="number" name="" id="iNum" placeholder="请输入你猜测的数字"></p>
+        </div>
+        <p id="levelDisplay" style="color:darkcyan;"></p>
+
+        <div id="guess" style="display: none;">
+            <p>输入猜测的数字：<input type="number" name="" id="iString" placeholder="请输入你猜测的数字"></p>
             <input type="button" name="" id="" value="按下按钮提交" onclick="guessNumber()">
-            <p style="color: red;" id="gameResult"></p>
-        </form>
+            <input type="button" value="重新开始" id="newGame" onclick="newGame()">
+        </div>
+
+        <p style="color: red;" id="gameResult"></p>
+
+        <table id="scoreBoard" style="display: none;">
+            <thead>
+                <tr>
+                    <th>游戏次数</th>
+                    <th>猜数位数</th>
+                    <th>有无重复</th>
+                    <th>答案</th>
+                    <th>猜测次数</th>
+                    <!-- <th>单局耗时</th> -->
+                    <!-- <th>单局得分</th> -->
+                </tr>
+            </thead>
+        </table>
 
         <!-- <script>alert('Hello World')</script> -->
         <script src="/js/project/numberGame.js"></script>

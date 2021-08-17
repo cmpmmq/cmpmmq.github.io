@@ -2,7 +2,7 @@
 let kString = '1233';
 
 // 设置游戏难度和猜数字位数
-const n = 4;
+let n = kString.length;
 
 function gameCaculate(iString){
     // 计分
@@ -55,6 +55,8 @@ function clickButton(){
     sum ++;
     let iNum = document.getElementById('iNum').value;
     kString = document.getElementById('kString').value;
+    n = kString.length;
+    
     let result = gameCaculate(iNum);
     let newRow = document.getElementById('gameBoard').insertRow(sum);
     newRow.insertCell(0).innerHTML = sum;

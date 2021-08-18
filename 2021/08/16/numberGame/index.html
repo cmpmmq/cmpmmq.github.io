@@ -251,7 +251,7 @@
         <div id="answerBoard" style="display: block;">
             <p>设定游戏难度</p>
             <ul>
-                <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9"><span class="validity"></span></li>
+                <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;"><span class="validity"></span></li>
                 <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字（还没写，你选了也没用）</li>
                 <li>游戏版本：<input type="radio" name="version" id="officalVersion" checked = true>正式游戏版 <input type="radio" name="version" id="testVersion">开发者内测版（还未开放，你选了也没用）</li>
             </ul>
@@ -263,7 +263,7 @@
         <p id="levelDisplay" style="color:darkcyan;"></p>
 
         <div id="guessBoard" style="display: none;">
-            <p>输入猜测的数字：<input type="number" name="" id="iString" required="required" placeholder="请输入你猜测的数字"><span class="validity"></span></p>
+            <p>输入猜测的数字：<input type="number" name="" id="iString" required="required" placeholder="请输入你猜测的数字" style="width: 10em;"><span class="validity"></span></p>
             <input type="button" name="" id="" value="按下按钮提交" onclick="guessNumber()">
             <input type="button" value="重新开始" id="newGame" onclick="newGame()">
         </div>

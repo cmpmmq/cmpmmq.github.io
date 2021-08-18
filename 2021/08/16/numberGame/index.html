@@ -203,7 +203,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>188 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>194 字</span>
         </span>
     
     
@@ -223,14 +223,15 @@
             
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="/css/project/numberGame.css">
+    </head>
     <body>
         <header>
             <h1>Number Game</h1>
         </header>
 
         <p>猜数字 游戏规则 (内测版懒得写规则 ing)</p>
-        <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisiing elit. Inventore, saepe quaerat facere dolorem eum dolor dolorum. Delectus dicta aliquam veniam assumenda. Doloremque maiores, esse aliquam quo optio magnam eum cupiditate?</p> -->
         <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）；不同位数选择，答案的随机数生成；重复or不重复；游戏进度缓存</p>
 
         <br>
@@ -242,17 +243,15 @@
                     <th>猜测数据</th>
                     <th>完全猜中</th>
                     <th>属于答案</th>
-                    <!-- <th>内测答案</th> -->
                 </tr>
             </thead>
             <tbody></tbody>
         </table>
 
         <div id="answerBoard" style="display: block;">
-            <!-- 答案产生板 -->
             <p>设定游戏难度</p>
             <ul>
-                <li>待猜的数字位数：<input type="number" id="n" value="3"></li>
+                <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9"><span class="validity"></span></li>
                 <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字（还没写，你选了也没用）</li>
                 <li>游戏版本：<input type="radio" name="version" id="officalVersion" checked = true>正式游戏版 <input type="radio" name="version" id="testVersion">开发者内测版（还未开放，你选了也没用）</li>
             </ul>
@@ -263,8 +262,8 @@
         </div>
         <p id="levelDisplay" style="color:darkcyan;"></p>
 
-        <div id="guess" style="display: none;">
-            <p>输入猜测的数字：<input type="number" name="" id="iString" placeholder="请输入你猜测的数字"></p>
+        <div id="guessBoard" style="display: none;">
+            <p>输入猜测的数字：<input type="number" name="" id="iString" required="required" placeholder="请输入你猜测的数字"><span class="validity"></span></p>
             <input type="button" name="" id="" value="按下按钮提交" onclick="guessNumber()">
             <input type="button" value="重新开始" id="newGame" onclick="newGame()">
         </div>

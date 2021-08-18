@@ -80,23 +80,21 @@ function gameCaculate(n, iString){
         }
     }
     
+    // 关于 result[1] 的真正含义
     for(j = 0; j < 10; j++){
         if(bookKey[j]){
-            result[1] += bookInput[j];
+            result[1] += Math.min(bookInput[j], bookKey[j]);
         }
     }
     
-    /*算法的测试 后台运行
-        console.log(keyNum);
-        console.log(inputNum);
-        console.log(bookKey);
-        console.log(bookInput);
-        console.log(`a = ${result[0]}`);
-        console.log(`b = ${result[1]}`);*/
+    //  算法的测试 后台运行
+        // console.log(keyNum);
+        // console.log(inputNum);
+        // console.log(bookKey);
+        // console.log(bookInput);
 
     return result;
 }
-
 
 let sum = 0;
 
@@ -136,7 +134,7 @@ function guessNumber(){
     }
     
     document.getElementById("iString").value = "";
-    document.getElementById("iString").placeholder = iString;
+    // document.getElementById("iString").placeholder = iString;
 }
 
 // initialization

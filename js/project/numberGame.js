@@ -2,13 +2,28 @@ let times = 0;      // 游戏盘数
 
 // 产生n位随机数
 function getRandom(n){
-    let kNum;
-    do{
-        kNum = parseInt(Math.random()*Math.pow(10,n));
+    let kNum, kString = new Array();
+    if(document.getElementById("isRepeatY").checked){
+        do{
+            kNum = parseInt(Math.random()*Math.pow(10,n));
+        }
+        while(kNum < Math.pow(10, n-1));
+        return kNum.toString();
+    }else{
+        const bookNum = new Array(10);
+        for (j=0; j<10; j++){
+            bookNum[j] = j;
+        }
+        bookNum.sort(function() {
+            return (0.5-Math.random());
+        });
+        kString = bookNum.join("");
+        if(kString.charAt() == '0'){
+            return kString.substring(1, n+1);
+        } else{
+            return kString.substring(0, n);
+        }
     }
-    while(kNum < Math.pow(10, n-1));
-
-    return kNum.toString();
 }
 
 // 设置游戏难度和猜数字位数
@@ -17,8 +32,6 @@ function gameGenerate(){
     if(document.getElementById("n").reportValidity()){
         const n = Number(document.getElementById('n').value);
         kString = getRandom(n);     // 产生n位数的答案
-
-        // 是否有重复数字
 
         // 是否内测
         // document.getElementById('kString').value = kString;
@@ -38,8 +51,6 @@ function gameGenerate(){
     } else{
         document.getElementById("n").value = 3;
     }
-
-    
 }
 
 // 游戏玩耍的计分
@@ -96,7 +107,7 @@ function guessNumber(){
     const iString = document.getElementById('iString').value;
     // kString = document.getElementById('kString').value;
     
-    const isRepeat = true;      // 提交答案难度
+    const isRepeat = document.getElementById("isRepeatY").checked.toString();      // 提交答案难度
 
     // 合法输入
     if(document.getElementById("iString").reportValidity()){

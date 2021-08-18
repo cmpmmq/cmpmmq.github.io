@@ -203,7 +203,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>194 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>185 字</span>
         </span>
     
     
@@ -251,8 +251,8 @@
         <div id="answerBoard" style="display: block;">
             <p>设定游戏难度</p>
             <ul>
-                <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;"><span class="validity"></span></li>
-                <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字（还没写，你选了也没用）</li>
+                <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;" step="1"><span class="validity"></span></li>
+                <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字</li>
                 <li>游戏版本：<input type="radio" name="version" id="officalVersion" checked = true>正式游戏版 <input type="radio" name="version" id="testVersion">开发者内测版（还未开放，你选了也没用）</li>
             </ul>
             <p>游戏难度确认后不可更改!  <input type="button" value="按下开始游戏" onclick="gameGenerate()"></p>

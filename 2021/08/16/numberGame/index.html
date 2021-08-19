@@ -203,7 +203,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>183 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>192 字</span>
         </span>
     
     
@@ -249,7 +249,7 @@
         </table>
 
         <div id="answerBoard" style="display: block;">
-            <p>设定游戏难度</p>
+            <p>第 <span id="times">1</span> 局： 设定游戏难度</p>
             <ul>
                 <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;" step="1"><span class="validity"></span></li>
                 <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字</li>
@@ -272,12 +272,14 @@
 
         <table id="scoreBoard" style="display: none;">
             <thead>
+                <caption>游戏得分</caption>
                 <tr>
                     <th>游戏次数</th>
                     <th>猜数位数</th>
                     <th>有无重复</th>
                     <th>答案</th>
                     <th>猜测次数</th>
+                    <th>记录</th>
                     <!-- <th>单局耗时</th> -->
                     <!-- <th>单局得分</th> -->
                 </tr>

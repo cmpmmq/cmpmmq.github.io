@@ -38,11 +38,18 @@ function gameGenerate(){
         // document.getElementById('gameDisplay').innerHTML = '答案已生成，游戏开始';
         
         console.log(kString);       // 后台答案
+
+        let isRepeat;
+        if(document.getElementById("isRepeatY").checked){
+            isRepeat = "可能有";
+        } else{
+            isRepeat = "一定无";
+        }
         
         // 游戏界面调整
         document.getElementById("guessBoard").style.display = "block";   // 显示猜数字板
         document.getElementById("answerBoard").style.display = "none";  // 禁用难度板
-        document.getElementById("levelDisplay").innerHTML = `已成功加载游戏难度为 ${n} 位数的游戏，开始挑战！`;
+        document.getElementById("levelDisplay").innerHTML = `第 ${times+1} 局：已成功加载游戏难度为 ${n} 位数、${isRepeat}重复数字 的游戏，开始挑战！`;
         document.getElementById("newGame").value = "重新开始";
 
         // 限定游戏板 输入的数字范围
@@ -119,7 +126,7 @@ function guessNumber(){
         // newRow.insertCell(4).innerHTML = kString;
 
         if(kString == iString){
-            document.getElementById("gameResult").innerHTML = "恭喜你猜对了，还剩几根头发？";
+            document.getElementById("gameResult").innerHTML = "恭喜你猜对了！";
             document.getElementById("newGame").value = "再来一局"
             times ++;
 
@@ -130,6 +137,7 @@ function guessNumber(){
             newScore.insertCell(2).innerHTML = isRepeat.toString();
             newScore.insertCell(3).innerHTML = kString;
             newScore.insertCell(4).innerHTML = sum;
+            newScore.insertCell(5).innerHTML = "...";
         }
     }
     
@@ -140,9 +148,11 @@ function guessNumber(){
 // initialization
 // btn onclick
 function newGame(){
-    document.getElementById("guessBoard").style.display = "none";   // 显示猜数字板
-    document.getElementById("answerBoard").style.display = "block";  // 禁用难度板
-    document.getElementById("levelDisplay").innerHTML = "";     // 取消游戏难度提示板
+    document.getElementById("guessBoard").style.display = "none";
+    document.getElementById("answerBoard").style.display = "block";
+    document.getElementById("scoreBoard").style.display = "none";
+    document.getElementById("levelDisplay").innerHTML = "";
+    document.getElementById("times").innerHTML = times + 1;
     for(i=1; i<=sum; i++){
         document.getElementById("gameBoard").deleteRow(1);
     }

@@ -203,7 +203,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>192 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>224 字</span>
         </span>
     
     
@@ -234,8 +234,8 @@
         <p>猜数字 游戏规则 (内测版懒得写规则 ing)</p>
         <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）；不同位数选择，答案的随机数生成；重复or不重复；游戏进度缓存</p>
 
-        <br>
-        <table id="gameBoard">
+        <p align="right" style="display: none;" id="guessDisplay"><input type="button" value="重设难度" id="btn-restart" onclick="restartClick()"> <input type="button" value="历史记录" id="btn-history" onclick="historyClick()"></p>
+        <table id="gameDisplay">
             <caption>游戏界面</caption>
             <thead>
                 <tr>
@@ -249,44 +249,38 @@
         </table>
 
         <div id="answerBoard" style="display: block;">
-            <p>第 <span id="times">1</span> 局： 设定游戏难度</p>
+            <p>第 <span id="timesDisplay">1</span> 局： 设定游戏难度</p>
             <ul>
-                <li>待猜的数字位数（范围限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;" step="1"><span class="validity"></span></li>
-                <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">无重复数字</li>
-                <li>游戏版本：<input type="radio" name="version" id="officalVersion" checked = true>正式游戏版 <input type="radio" name="version" id="testVersion">开发者内测版（还未开放，你选了也没用）</li>
+                <li>待猜的数字位数（限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;" step="1"><span class="validity"></span></li>
+                <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>可能有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">一定无重复数字</li>
+                <li>游戏版本：<input type="radio" name="version" id="randomlVersion" checked = true>随机数据 <input type="radio" name="version" id="freeVersion">自定数据（还未开放，你选了也没用）</li>
             </ul>
-            <p>游戏难度确认后不可更改!  <input type="button" value="按下开始游戏" onclick="gameGenerate()"></p>
-            <!-- <p style="color: red;" id="gameDisplay"> 警告，答案未生成</p> -->
-            <!-- <p>测试版，请输入测试的答案or按上方按钮生成：<input type="number" name="" id="kString" placeholder="请输入设定的答案"></p> -->
-
+            <p>游戏难度确认后不可更改!  <input type="button" value="按下开始游戏" onclick="gameGenerateClick()"></p>
         </div>
-        <p id="levelDisplay" style="color:darkcyan;"></p>
 
         <div id="guessBoard" style="display: none;">
+            <p style="color:darkcyan;">第 <span id="times"></span> 局：已成功加载游戏难度为 <span id="nDisplay"></span> 位数、<span id="isRepeatDisplay"></span>重复数字 的游戏，开始挑战！</p>
             <p>输入猜测的数字：<input type="number" name="" id="iString" required="required" placeholder="请输入你猜测的数字" style="width: 10em;"><span class="validity"></span></p>
-            <input type="button" name="" id="" value="按下按钮提交" onclick="guessNumber()">
-            <input type="button" value="重新开始" id="newGame" onclick="newGame()">
+            <p><input type="button" id="btn-guessNumber" value="按下按钮提交" onclick="guessNumberClick()" style="display: block;"></p>
         </div>
 
-        <p style="color: red;" id="gameResult"></p>
+        <p style="color: red; display: none;" id="gameResult" >恭喜你猜对了！<input type="button" value="再来一局" id="btn-newGame" onclick="newGameClick()"></p>
 
-        <table id="scoreBoard" style="display: none;">
+        <table id="scoreDisplay" style="display: none;">
             <thead>
                 <caption>游戏得分</caption>
                 <tr>
-                    <th>游戏次数</th>
-                    <th>猜数位数</th>
+                    <th>局数</th>
+                    <th>位数</th>
                     <th>有无重复</th>
-                    <th>答案</th>
+                    <th>正确答案</th>
                     <th>猜测次数</th>
+                    <th>单局耗时</th>
                     <th>记录</th>
-                    <!-- <th>单局耗时</th> -->
-                    <!-- <th>单局得分</th> -->
                 </tr>
             </thead>
         </table>
 
-        <!-- <script>alert('Hello World')</script> -->
         <script src="/js/project/numberGame.js"></script>
     </body>
 </html>

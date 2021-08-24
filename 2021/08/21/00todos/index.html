@@ -9,7 +9,7 @@
     
     <title>
         
-            js 猜数字 猜单词小游戏 | 内测版试运行 |
+            一些新想法 |
         
         MMQ&#39;s Blog
     </title>
@@ -150,7 +150,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">js 猜数字 猜单词小游戏 | 内测版试运行</span>
+            <span class="title-hover-animation">一些新想法</span>
         </div>
 
         
@@ -168,38 +168,15 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-08-16 23:09:54
+        <i class="fas fa-edit"></i>&nbsp;2021-08-21 12:29:35
     </span>
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/tags/%E8%87%AA%E5%AD%A6/">自学</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/beginner/">beginner</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/%E5%B0%8F%E6%B8%B8%E6%88%8F/">小游戏</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/Web/">Web</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>204 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>134 字</span>
         </span>
     
     
@@ -216,70 +193,23 @@
         
 
         <div class="article-content markdown-body">
-            
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="/css/project/numberGame.css">
-    </head>
-    <body>
-        <header>
-            <h1>Number Game</h1>
-        </header>
+            <ol>
+<li><input disabled="" type="checkbox"> 写完猜数字的游戏，实现基本功能<ul>
+<li><input checked="" disabled="" type="checkbox"> js 后台语法的实现</li>
+<li><input checked="" disabled="" type="checkbox"> html DOM 实现初步的输入和输出</li>
+<li><input disabled="" type="checkbox"> localStorage( ) 实现缓存的写入、读取、清空</li>
+<li><input disabled="" type="checkbox"> 编写游戏规则，录制游戏视频</li>
+<li>(太难了不准备实现) 计算机暴力解法 &amp; 人机对抗模式</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> 网站国际化的实现</li>
+<li><input disabled="" type="checkbox"> 猜数字的升级版，猜单词 &amp; hangman</li>
+<li><input disabled="" type="checkbox"> 刷 Traversy Media 的 js, css, html DOM crash course</li>
+<li><input disabled="" type="checkbox"> 这个页面写个 todos</li>
+<li><input disabled="" type="checkbox"> 申请域名 腾讯云(?)</li>
+<li><input disabled="" type="checkbox"> 提交百度谷歌收录博客</li>
+</ol>
 
-        <p>猜数字 游戏规则 (内测版懒得写规则 ing)</p>
-        <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）；游戏进度缓存</p>
-
-        <p align="right" style="display: none;" id="guessDisplay"><input type="button" value="重设难度" id="btn-restart" onclick="restartClick()"> <input type="button" value="历史记录" id="btn-history" onclick="historyClick()"></p>
-        <table id="gameDisplay">
-            <caption>游戏界面</caption>
-            <thead>
-                <tr>
-                    <th>次数</th>
-                    <th>猜测数据</th>
-                    <th>正确位数</th>
-                    <th>正确数字</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-
-        <div id="answerBoard" style="display: block;">
-            <p>第 <span id="timesDisplay">1</span> 局： 设定游戏难度</p>
-            <ul>
-                <li>待猜的数字位数（限定2-9）：<input type="number" id="n" value="3" min="2" max="9" style="width: 5em;" step="1"><span class="validity"></span></li>
-                <li>是否包含重复数字：<input type="radio" name="isRepeat" id="isRepeatY" checked = true>可能有重复数字 <input type="radio" name="isRepeat" id="isRepeatN">一定无重复数字</li>
-                <li>游戏版本：<input type="radio" name="version" id="randomlVersion" checked = true>随机数据 <input type="radio" name="version" id="freeVersion">自定数据（还未开放，你选了也没用）</li>
-            </ul>
-            <p>游戏难度确认后不可更改!  <input type="button" value="按下开始游戏" onclick="gameGenerateClick()"></p>
-        </div>
-
-        <div id="guessBoard" style="display: none;">
-            <p style="color:darkcyan;">第 <span id="times"></span> 局：已成功加载游戏难度为 <span id="nDisplay"></span> 位数、<span id="isRepeatDisplay"></span>重复数字 的游戏，开始挑战！</p>
-            <p>输入猜测的数字：<input type="number" name="" id="iString" required="required" placeholder="请输入你猜测的数字" style="width: 10em;"><span class="validity"></span></p>
-            <p><input type="button" id="btn-guessNumber" value="按下按钮提交" onclick="guessNumberClick()" style="display: block;"></p>
-        </div>
-
-        <p style="color: red; display: none;" id="gameResult" >恭喜你猜对了！<input type="button" value="再来一局" id="btn-newGame" onclick="newGameClick()"></p>
-
-        <table id="scoreDisplay" style="display: none;">
-            <thead>
-                <caption>游戏得分</caption>
-                <tr>
-                    <th>局数</th>
-                    <th>位数</th>
-                    <th>有无重复</th>
-                    <th>正确答案</th>
-                    <th>猜测次数</th>
-                    <th>单局耗时</th>
-                    <th>记录</th>
-                </tr>
-            </thead>
-        </table>
-
-        <script src="/js/project/numberGame.js"></script>
-    </body>
-</html>
         </div>
 
         
@@ -291,10 +221,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/07/23/04semantic-tag/"
+                           href="/2021/08/16/05numberGame/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">HTML Semantic Tags &amp; a little CSS | Crash Course</span>
+                                <span class="post-nav-title-item">js 猜数字 猜单词小游戏 | 内测版试运行</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -403,7 +333,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Number Game</span></a></li></ol>
+        
     </div>
 </div>
         </aside>

@@ -54,12 +54,12 @@ function timetoString(ms){
     if(minutes<=9){
         return `${minutes}:${seconds}`;
     } else{
-        return `${minutes}:${seconds} 超时`;
         newGame.isTimeInterval = false;
+        return `${minutes}:${seconds}`;
     }
 }
 
-// 清理游戏猜测次数板
+// 清理游戏猜测板
 function tableClearGame(){
     const deleteRows = document.getElementById("gameDisplay").tBodies[0].rows.length;
     if(deleteRows > 0){
@@ -136,14 +136,17 @@ function showPreview(id, allGuesses){
 }
 // 写入表格第n局游戏得分
 function tableWriteScore(allGames){
-    const {id, n, isRepeat, kString, allGuesses, timeDisplay} = allGames;
+    const {id, n, isRepeat, kString, allGuesses, timeDisplay, isTimeInterval} = allGames;
     let newScore = document.getElementById('scoreDisplay').tBodies[0].insertRow(id-1);
     newScore.insertCell(0).innerHTML = id;
     newScore.insertCell(1).innerHTML = n;
     newScore.insertCell(2).innerHTML = isRepeat.toString();
     newScore.insertCell(3).innerHTML = kString;
     newScore.insertCell(4).innerHTML = allGuesses.length;
-    newScore.insertCell(5).innerHTML = timeDisplay;
+    if(isTimeInterval){
+        newScore.insertCell(5).innerHTML = timeDisplay;
+    } else {newScore.insertCell(5).innerHTML = timeDisplay + " 超时";}
+    
     newScore.insertCell(6).innerHTML = "...";
     document.getElementById("scoreDisplay").tBodies[0].rows[id-1].cells[6].addEventListener("click", function() {showPreview(id, allGuesses)});
 }

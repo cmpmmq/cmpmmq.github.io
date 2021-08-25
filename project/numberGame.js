@@ -188,35 +188,39 @@ function getRandom(n, isRepeat){
 
 // 设置游戏难度和猜数字位数
 function gameGenerateClick(){
-    if(document.getElementById("n").reportValidity()){
-        tableClearGame();
 
-        // 读取并统一保存数据
-        newGame.id = allGames.length - 1;
-        newGame.n = Number(document.getElementById('n').value);
-        newGame.isRepeat = document.getElementById("isRepeatY").checked;
-        newGame.kString = getRandom(newGame.n, newGame.isRepeat);
-        newGame.allGuesses = [];
-        newGame.isTimeInterval = true;
-        newGame.time = [new Date()];
-        newGame.timeDisplay = "";
-        const {n, isRepeat, kString} = newGame;
-        console.log(kString);       // 后台答案
-
-        // 游戏界面调整
-        document.getElementById("guessBoard").style.display = "block";   // 显示猜数字板
-        document.getElementById("answerBoard").style.display = "none";  // 禁用难度板
-        scoreDisplaySwitch(false);
-        document.getElementById("btn-restart").style.display = "";    // btns
-        document.getElementById("times").innerHTML = allGames.length - 1;
-        document.getElementById("nDisplay").innerHTML = n;
-        const isRepeatY = isRepeat? "可能有" : "一定无";
-        document.getElementById("isRepeatDisplay").innerHTML = isRepeatY;
-
-        // 限定游戏板 输入的数字范围
-        document.getElementById("iString").min = Math.pow(10, n-1);
-        document.getElementById("iString").max = Math.pow(10, n)-1;
-    } else{ document.getElementById("n").value = 3;}
+    if(document.getElementById("randomlVersion").checked){
+        if(document.getElementById("n").reportValidity()){
+            tableClearGame();
+    
+            // 读取并统一保存数据
+            newGame.id = allGames.length - 1;
+            newGame.n = Number(document.getElementById('n').value);
+            newGame.isRepeat = document.getElementById("isRepeatY").checked;
+            newGame.kString = getRandom(newGame.n, newGame.isRepeat);
+            newGame.allGuesses = [];
+            newGame.isTimeInterval = true;
+            newGame.time = [new Date()];
+            newGame.timeDisplay = "";
+            const {n, isRepeat, kString} = newGame;
+            console.log(kString);       // 后台答案
+    
+            // 游戏界面调整
+            document.getElementById("guessBoard").style.display = "block";   // 显示猜数字板
+            document.getElementById("answerBoard").style.display = "none";  // 禁用难度板
+            scoreDisplaySwitch(false);
+            document.getElementById("btn-restart").style.display = "";    // btns
+            document.getElementById("times").innerHTML = allGames.length - 1;
+            document.getElementById("nDisplay").innerHTML = n;
+            const isRepeatY = isRepeat? "可能有" : "一定无";
+            document.getElementById("isRepeatDisplay").innerHTML = isRepeatY;
+    
+            // 限定游戏板 输入的数字范围
+            document.getElementById("iString").min = Math.pow(10, n-1);
+            document.getElementById("iString").max = Math.pow(10, n)-1;
+        } else{ document.getElementById("n").value = 3;}
+    }
+    
 }
 
 // n位iString输入，游戏玩耍的计分，得到result(2)

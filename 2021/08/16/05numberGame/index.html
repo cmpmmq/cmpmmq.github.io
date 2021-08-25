@@ -199,7 +199,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>226 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>220 字</span>
         </span>
     
     
@@ -228,14 +228,13 @@
         </header>
 
         <p>猜数字 游戏规则 (内测版懒得写规则 ing)</p>
-        <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）；游戏进度缓存</p>
+        <p>todos 待实现功能: 写游戏规则文字版、做游戏规则引导动画（？）</p>
 
         <div id="topbar">
             <input type="button" value="游戏规则">
             <input type="button" value="历史记录" id="bHistory" onclick="historyClick()">
+            <input type="button" value="重设难度" id="btn-restart" onclick="restartClick()" style="display: none;">
             <input type="button" value="清除记录" onclick="removeClick()">
-            <span><input type="button" value="重设难度" id="btn-restart" onclick="restartClick()" style="display: none;"></span>
-            
         </div>
         <br>
 
@@ -248,9 +247,7 @@
                     <th>正确数字</th>
                 </tr>
             </thead>
-            <tbody id="gameDisplay-tbody">
-
-            </tbody>
+            <tbody></tbody>
         </table>
 
         <div id="answerBoard" style="display: block;">
@@ -301,7 +298,7 @@
                     <td onclick="showPreview(0, allGames[1].allGuesses)">...</td>
                 </tr>
             </thead>
-            <tbody id="scoreDisplay-tbody"></tbody>
+            <tbody></tbody>
             <tfoot>
                 <tr>
                     <th colspan="2">你的等级</th>

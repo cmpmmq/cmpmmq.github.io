@@ -29,6 +29,8 @@ let allGames = [
             {iString: "8907", result: [0,1]},
             {iString: "5181", result: [2,2]},
             {iString: "5951", result: [1,3]},
+            {iString: "5955", result: [1,2]},
+            {iString: "5999", result: [2,3]},
             {iString: "5199", result: [4,4]}
         ],
         isTimeInterval: false,
@@ -37,7 +39,25 @@ let allGames = [
     }
 ];
 const newGame = {};
-const levelName = ["新秀", "少侠", "大侠", "掌门", "宗师", "盟主"];
+let levelName = ["新秀", "少侠", "大侠", "掌门", "宗师", "盟主"];
+const levelNames = [
+    { name: ["青铜", "白银", "黄金", "白金", "钻石", "星钻", "大师", "王者", "超神"]},
+    { name: ["少年级", "三级", "二级", "一级", "健将", "国际健将", "国家纪录", "亚洲纪录", "世界纪录"]},
+    { name: ["院队", "校队", "市队", "省队", "国家队", "奥运队", "半决赛", "决赛", "冠军"]},
+    { name: ["初学弟子", "小有名气", "名动一方", "江湖少侠", "江湖大侠", "一派掌门", "一代宗师", "武林盟主", "江湖传说"]},
+    { name: ["预备役", "士兵", "初级士官", "中级士官", "高级士官", "尉官", "校官", "将官", "元帅"]}
+];
+
+
+function levelNameClick(){
+    for(i=0; i<5; i++){
+        if(document.getElementsByName("level")[i].checked){
+            levelName = Object.assign([], levelNames[i].name);
+            document.getElementById("levelName").innerHTML = levelName.join(", ");
+            return;
+        }
+    }
+}
 
 // 本地储存游戏进度
 if(localStorage.getItem("allGames") == null){
@@ -51,12 +71,8 @@ document.getElementById("times").innerHTML = allGames.length - 1;
 function timetoString(ms){
     const seconds = parseInt(ms/1000%60);
     const minutes = parseInt(ms/1000/60);
-    if(minutes<=9){
-        return `${minutes}:${seconds}`;
-    } else{
-        newGame.isTimeInterval = false;
-        return `${minutes}:${seconds}`;
-    }
+    if(minutes > 9){ newGame.isTimeInterval = false;}
+    return `${minutes}:${seconds}`;
 }
 
 // 清理游戏猜测板
@@ -79,20 +95,25 @@ function tableWriteGame(allGuesses, n){
 
 // 根据总有效局数 => 计算游戏总时长 & 等级
 function levelCaculate(){
-    let sumTime = 0, games = 0;
+    let sumTime = 0, totalScores = 0;
     for(i=0; i<allGames.length; i++){
-        if(allGames[i].isTimeInterval){
-            sumTime += Number(allGames[i].time[2]);
-            games ++;
+        let {n, isRepeat, isTimeInterval, time} = allGames[i];
+        if(isTimeInterval){
+            sumTime += Number(time[2]);
+            if(isRepeat){
+                totalScores += n;
+            } else{
+                totalScores += n*0.8;
+            }
         }
     }
-    document.getElementById("scoreDisplay").tFoot.rows[0].cells[3].innerHTML = timetoString(sumTime);
+    document.getElementById("scoreDisplay").tFoot.rows[0].cells[5].innerHTML = timetoString(sumTime);
 
     let nlevel = 0;
-    if(games>0){
-        nlevel = parseInt(Math.log(games)/Math.log(2));
-        if(nlevel>6) {nlevel = 6;}
+    if(totalScores>0){
+        nlevel = parseInt(Math.log(totalScores)/Math.log(3));
     }
+    document.getElementById("scoreDisplay").tFoot.rows[0].cells[3].innerHTML = totalScores;
     document.getElementById("scoreDisplay").tFoot.rows[0].cells[1].innerHTML = nlevel +". "+ levelName[nlevel];
 }
 // scoreDisplay switch
@@ -101,9 +122,12 @@ function historyClick(){
     if(document.getElementById("scoreDisplay").style.display == "none"){
         levelCaculate();
         document.getElementById("scoreDisplay").style.display = "block";
+        document.getElementById("h4Score").style.display = "block";
         document.getElementById("bHistory").value = "隐藏记录";
+        tableScoreClearColor();
     } else{ // 要隐藏
         document.getElementById("scoreDisplay").style.display = "none";
+        document.getElementById("h4Score").style.display = "none";
         document.getElementById("bHistory").value = "历史记录";
     }
 }
@@ -112,18 +136,25 @@ function scoreDisplaySwitch(condition){
     if(condition){
         levelCaculate();
         document.getElementById("scoreDisplay").style.display = "block";
+        document.getElementById("h4Score").style.display = "block";
         document.getElementById("bHistory").value = "隐藏记录";
+        tableScoreClearColor();
     } else{ // 要隐藏
         document.getElementById("scoreDisplay").style.display = "none";
+        document.getElementById("h4Score").style.display = "none";
         document.getElementById("bHistory").value = "历史记录";
     }
 }
-// 第n行为粉色
-function tableScoreColor(n){
+
+function tableScoreClearColor(){
     const scoreRows = document.getElementById("scoreDisplay").rows.length;
     for(i=1; i<=scoreRows-2; i++){
         document.getElementById("scoreDisplay").rows[i].cells[6].style.background = "";
     }
+}
+// 第n行为粉色
+function tableScoreColor(n){
+    tableScoreClearColor();
     document.getElementById("scoreDisplay").rows[n].cells[6].style.background = "pink";
 }
 // GameDisplay 显示n次猜测的数据
@@ -188,39 +219,36 @@ function getRandom(n, isRepeat){
 
 // 设置游戏难度和猜数字位数
 function gameGenerateClick(){
+    tableClearGame();
+    newGame.id = allGames.length - 1;
+    
+    if(document.getElementById("n").reportValidity()){
+        // 读取并统一保存数据
+        newGame.n = Number(document.getElementById('n').value);
+        newGame.isRepeat = document.getElementById("isRepeatY").checked;
+        newGame.kString = getRandom(newGame.n, newGame.isRepeat);   
+        newGame.allGuesses = [];
+        newGame.isTimeInterval = true;
+        newGame.time = [new Date()];
+        newGame.timeDisplay = "";
+        const {n, isRepeat, kString} = newGame;
+        console.log(kString);       // 后台答案
 
-    if(document.getElementById("randomlVersion").checked){
-        if(document.getElementById("n").reportValidity()){
-            tableClearGame();
-    
-            // 读取并统一保存数据
-            newGame.id = allGames.length - 1;
-            newGame.n = Number(document.getElementById('n').value);
-            newGame.isRepeat = document.getElementById("isRepeatY").checked;
-            newGame.kString = getRandom(newGame.n, newGame.isRepeat);
-            newGame.allGuesses = [];
-            newGame.isTimeInterval = true;
-            newGame.time = [new Date()];
-            newGame.timeDisplay = "";
-            const {n, isRepeat, kString} = newGame;
-            console.log(kString);       // 后台答案
-    
-            // 游戏界面调整
-            document.getElementById("guessBoard").style.display = "block";   // 显示猜数字板
-            document.getElementById("answerBoard").style.display = "none";  // 禁用难度板
-            scoreDisplaySwitch(false);
-            document.getElementById("btn-restart").style.display = "";    // btns
-            document.getElementById("times").innerHTML = allGames.length - 1;
-            document.getElementById("nDisplay").innerHTML = n;
-            const isRepeatY = isRepeat? "可能有" : "一定无";
-            document.getElementById("isRepeatDisplay").innerHTML = isRepeatY;
-    
-            // 限定游戏板 输入的数字范围
-            document.getElementById("iString").min = Math.pow(10, n-1);
-            document.getElementById("iString").max = Math.pow(10, n)-1;
-        } else{ document.getElementById("n").value = 3;}
-    }
-    
+        // 游戏界面调整
+        document.getElementById("guessBoard").style.display = "block";   // 显示猜数字板
+        document.getElementById("answerBoard").style.display = "none";  // 禁用难度板
+        scoreDisplaySwitch(false);
+        document.getElementById("btn-restart").style.display = "";   // btns
+        document.getElementById("bHistory").style.display = "none";
+        document.getElementById("times").innerHTML = allGames.length - 1;
+        document.getElementById("nDisplay").innerHTML = n;
+        const isRepeatY = isRepeat? "可能有" : "一定无";
+        document.getElementById("isRepeatDisplay").innerHTML = isRepeatY;
+
+        // 限定游戏板 输入的数字范围
+        document.getElementById("iString").min = Math.pow(10, n-1);
+        document.getElementById("iString").max = Math.pow(10, n)-1;         
+    } else{ document.getElementById("n").value = 3;}
 }
 
 // n位iString输入，游戏玩耍的计分，得到result(2)
@@ -288,6 +316,7 @@ function guessNumberClick(){
             document.getElementById("gameResult").style.display = "block";
             document.getElementById("guessBoard").style.display = "none";
             document.getElementById("btn-restart").style.display = "none";
+            document.getElementById("bHistory").style.display = "";
             
         }
     }
@@ -299,6 +328,7 @@ function newGameClick(){
     document.getElementById("gameResult").style.display = "none";
     document.getElementById("answerBoard").style.display = "block";
     document.getElementById("btn-restart").style.display = "none";
+    document.getElementById("bHistory").style.display = "";
     document.getElementById("guessBoard").style.display = "none";
     document.getElementById("times").innerHTML = allGames.length - 1;
     document.getElementById("timesDisplay").innerHTML = allGames.length - 1;
@@ -320,3 +350,12 @@ function removeClick(){
     }
 }
 
+function ruleClick(){
+    if(document.getElementById("btnRule").value == "游戏规则"){
+        document.getElementById("rule").style.display = "block";
+        document.getElementById("btnRule").value = "隐藏规则";
+    } else{
+        document.getElementById("rule").style.display = "none";
+        document.getElementById("btnRule").value = "游戏规则";
+    }
+}

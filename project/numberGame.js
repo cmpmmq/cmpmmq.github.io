@@ -39,7 +39,8 @@ let allGames = [
     }
 ];
 const newGame = {};
-let levelName = ["新秀", "少侠", "大侠", "掌门", "宗师", "盟主"];
+
+let levelName = [], nlevel = 0;
 const levelNames = [
     { name: ["青铜", "白银", "黄金", "白金", "钻石", "星钻", "大师", "王者", "超神"]},
     { name: ["少年级", "三级", "二级", "一级", "健将", "国际健将", "国家纪录", "亚洲纪录", "世界纪录"]},
@@ -48,16 +49,26 @@ const levelNames = [
     { name: ["预备役", "士兵", "初级士官", "中级士官", "高级士官", "尉官", "校官", "将官", "元帅"]}
 ];
 
-
 function levelNameClick(){
     for(i=0; i<5; i++){
         if(document.getElementsByName("level")[i].checked){
             levelName = Object.assign([], levelNames[i].name);
             document.getElementById("levelName").innerHTML = levelName.join(", ");
+            nlevel = i;
+            localStorage.setItem("nlevel", JSON.stringify(nlevel));
+            levelCaculate();
             return;
         }
     }
 }
+
+if(localStorage.getItem("nlevel") == null){
+    localStorage.setItem("nlevel", JSON.stringify(nlevel));
+} else{
+    nlevel = Number(localStorage.getItem("nlevel"));
+    document.getElementsByName("level")[nlevel].checked = true;
+}
+levelNameClick();
 
 // 本地储存游戏进度
 if(localStorage.getItem("allGames") == null){
@@ -113,7 +124,7 @@ function levelCaculate(){
     if(totalScores>0){
         nlevel = parseInt(Math.log(totalScores)/Math.log(3));
     }
-    document.getElementById("scoreDisplay").tFoot.rows[0].cells[3].innerHTML = totalScores;
+    document.getElementById("scoreDisplay").tFoot.rows[0].cells[3].innerHTML = totalScores.toFixed(1);
     document.getElementById("scoreDisplay").tFoot.rows[0].cells[1].innerHTML = nlevel +". "+ levelName[nlevel];
 }
 // scoreDisplay switch

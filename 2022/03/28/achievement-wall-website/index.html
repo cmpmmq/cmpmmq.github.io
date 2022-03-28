@@ -168,7 +168,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-28 14:47:15
+        <i class="fas fa-edit"></i>&nbsp;2022-03-28 19:10:56
     </span>
     
     
@@ -200,7 +200,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="project/html2canvas.min.js"></script>
+    <script src="/project/html2canvas.min.js"></script>
     <title>下载电子证书</title>
 </head>
 <body>
@@ -221,7 +221,13 @@
     <br>
     <button type="button" name="button" onclick="convert()">点击下载你的成就墙</button>
 
-    <div id="capture" style="padding: 10px; background: #f5da55">
+    <div>
+        <img src="" alt="" id="img-achievement" width="80%">
+    </div>
+
+    <br>
+
+    <div id="capture" style="padding: 10px; background: #f5da55; width: 400px;">
         <!-- <h4 style="color: #000; ">Hello world!</h4> -->
         <!-- <p>挑战者 XXX，你于周X 奔跑 XXkm，获得XX证书。</p> -->
         <p><span>(这一块里的内容会出现在证书的图片里面)</span></p>
@@ -230,7 +236,7 @@
             <p>你的名字 <span>获得了X枚徽章</span></p>
         </div>
 
-        <p>-------「奔跑吧！泡泡」成就墙 -------</p>
+        <p><span>-------「奔跑吧！泡泡」成就墙 -------</span></p>
 
         <div id="medals">
             <div style="display: inline-block; background-color: orange;">
@@ -239,7 +245,7 @@
             </div>
             <div style="display: inline-block; background-color: orange">
                 <p><span>图片</span></p>
-                <p><span>状态：已点亮</span> <span>日期；跑量</span></p>
+                <p><span>状态：已点亮</span><br><span>日期；跑量</span></p>
             </div>
             <div style="display: inline-block; background-color: orange;">
                 <p><span>图片</span></p>
@@ -260,7 +266,7 @@
             </div>
             <div style="display: inline-block; background-color: orange">
                 <p><span>图片</span></p>
-                <p><span>状态：已点亮</span> <span>日期；跑量</span></p>
+                <p><span>状态：已点亮</span><br><span>日期；跑量</span></p>
             </div>
             <div style="display: inline-block; background-color: orange;">
                 <p><span>图片</span></p>
@@ -284,7 +290,7 @@
     <br>
 
    
-    <script src="project/achievement-wall.js"></script>
+    <script src="/project/achievement-wall.js"></script>
 </body>
 
 </html>
